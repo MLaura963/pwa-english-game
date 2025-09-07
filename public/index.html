@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roulette English Game</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+  <div id="game-container">
+    <h1>Roulette English Game</h1>
+    <div id="setup">
+      <label for="player-count">Number of players:</label>
+      <input type="number" id="player-count" min="1" value="2">
+      <button id="start-game">Start Game</button>
+    </div>
+    <div id="game" style="display: none;">
+      <div id="players"></div>
+      <canvas id="wheel" width="400" height="400"></canvas>
+      <button id="spin">Spin the Wheel</button>
+      <div id="question-container" style="display: none;">
+        <h2 id="question-text"></h2>
+        <form id="answer-form"></form>
+        <button id="submit-answer">Submit</button>
+      </div>
+      <button id="end-game" style="display: none;">End Game and Show Winner</button>
+    </div>
+  </div>
+  <script src="js/questions.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then(() => console.log('Service Worker registered'))
+        .catch(err => console.error('Service Worker registration failed', err));
+    }
+  </script>
+</body>
+</html>
